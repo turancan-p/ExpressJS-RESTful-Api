@@ -12,7 +12,7 @@ exports.update_one_courier = (req, res, next) => {};
 
 exports.delete_one_courier = (req, res, next) => {};
 
-//kuryeid sine göre order çek
+//courierid get order 
 exports.get_courier_orders = (req, res, next) => {
   const shopName = req.user.shopName;
   const courierId = req.params.courierId;

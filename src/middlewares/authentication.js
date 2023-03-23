@@ -23,42 +23,51 @@ module.exports = (req, res, next) => {
       }
       req.user = user;
 
-      console.log(user.type);
       if (user.type === "User") {
         await User.findById(user.userId)
-          .select("ip")
+          .select("ip accessToken")
           .exec()
           .then(async (result) => {
-            if (token !== result.accessToken) {
+            if (!result) {
               return res.status(401).json({
                 Error: "Auth Failed",
               });
+            } else if (accessToken !== result.accessToken) {
+              return res.status(401).json({
+                Error: "Auth Failed",
+              });
+            } else if (result.ip !== realIp) {
+              return res.status(401).json({
+                Error: "Auth Failed",
+              });
+            } else {
+              next();
             }
-            if (result.ip !== realIp)
-              return res.status(401).json({
-                Error: "Auth Failed",
-              });
           });
       }
 
       if (user.type === "Courier") {
         await Courier.findById(user.userId)
-          .select("ip")
+          .select("ip accessToken")
           .exec()
           .then(async (result) => {
-            if (token !== result.accessToken) {
+            if (!result) {
               return res.status(401).json({
                 Error: "Auth Failed",
               });
+            } else if (accessToken !== result.accessToken) {
+              return res.status(401).json({
+                Error: "Auth Failed",
+              });
+            } else if (result.ip !== realIp) {
+              return res.status(401).json({
+                Error: "Auth Failed",
+              });
+            } else {
+              next();
             }
-            if (result.ip !== realIp)
-              return res.status(401).json({
-                Error: "Auth Failed",
-              });
           });
       }
-
-      next();
     });
   }
 };

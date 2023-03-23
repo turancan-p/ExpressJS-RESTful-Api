@@ -22,10 +22,10 @@ module.exports = {
     Object.find({ shopName: shopName })
       .exec()
       .then((results) => {
-        res.status(200).json(results);
+        return res.status(200).json(results);
       })
       .catch((err) => {
-        res.status(500).json(err);
+        return res.status(500).json(err);
       });
   },
   get_one_data: async (req, res, next, Object, shopName, id) => {
@@ -104,12 +104,12 @@ module.exports = {
       .exec()
       .then((result) => {
         if (!result) {
-          res.status(500).json({ Error: "Not found" });
+          return res.status(500).json({ Error: "Not found" });
         }
-        res.status(200).json({ Response: "Deleted successfully" });
+        return res.status(200).json({ Response: "Deleted successfully" });
       })
       .catch((err) => {
-        res.status(500).json({ Error: "Failed" });
+        return res.status(500).json({ Error: "Failed" });
       });
   },
   //just for new order
@@ -171,10 +171,10 @@ module.exports = {
     })
       .exec()
       .then((results) => {
-        res.status(200).json(results);
+        return res.status(200).json(results);
       })
       .catch((err) => {
-        res.status(500).json(err);
+        return res.status(500).json(err);
       });
   },
 };

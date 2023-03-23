@@ -99,6 +99,7 @@ exports.user_login = (req, res, next) => {
             email: user[0].email,
             userId: user[0].id,
             shopName: user[0].shopName,
+            type: "User",
           };
           accessToken = _helper.createAccessToken(data);
 

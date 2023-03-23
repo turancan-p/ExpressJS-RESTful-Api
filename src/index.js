@@ -8,8 +8,10 @@ const users = require("./routes/users");
 
 const Route = express.Router();
 
-Route.use("/user", users).use("/products", products).use("/orders", orders);
-// .use("/courier", checkAuthentication, couriers)
-// .use("/customer", checkAuthentication, customers)
+Route.use("/user", users)
+  .use("/products", products)
+  .use("/orders", orders)
+  .use("/couriers", couriers)
+  .use("/customers", customers);
 
 module.exports = Route;

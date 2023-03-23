@@ -14,6 +14,8 @@ const courierSchema = mongoose.Schema(
     },
     password: { type: String, required: true },
     phone: { type: String, required: true },
+    authorization: { type: String, default: "Courier" },
+    ip: { type: String },
   },
   { versionKey: false }
 );

@@ -14,6 +14,7 @@ const userSchema = mongoose.Schema(
     password: { type: String, required: true },
     phone: { type: String, required: true, unique: true },
     shopName: { type: String, required: true, unique: true },
+    authorization: { type: String, default: "User" },
     ip: { type: String },
   },
   { versionKey: false }

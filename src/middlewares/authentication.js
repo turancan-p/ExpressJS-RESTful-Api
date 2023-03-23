@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
+const Courier = require("../models/courier");
 
 module.exports = (req, res, next) => {
   const token = req.headers.authorization;
@@ -22,16 +23,32 @@ module.exports = (req, res, next) => {
       }
       req.user = user;
 
-      await User.findById(user.userId)
-        .select("ip")
-        .exec()
-        .then(async (result) => {
-          console.log(result.ip);
-          if (result.ip !== realIp)
-            return res.status(401).json({
-              Error: "Auth Failed",
-            });
-        });
+      console.log(user.type);
+      if (user.type === "User") {
+        await User.findById(user.userId)
+          .select("ip")
+          .exec()
+          .then(async (result) => {
+            console.log(result.ip);
+            if (result.ip !== realIp)
+              return res.status(401).json({
+                Error: "Auth Failed",
+              });
+          });
+      }
+
+      if (user.type === "Courier") {
+        await Courier.findById(user.userId)
+          .select("ip")
+          .exec()
+          .then(async (result) => {
+            console.log(result.ip);
+            if (result.ip !== realIp)
+              return res.status(401).json({
+                Error: "Auth Failed",
+              });
+          });
+      }
 
       next();
     });

@@ -29,7 +29,11 @@ module.exports = (req, res, next) => {
           .select("ip")
           .exec()
           .then(async (result) => {
-            console.log(result.ip);
+            if (token !== result.accessToken) {
+              return res.status(401).json({
+                Error: "Auth Failed",
+              });
+            }
             if (result.ip !== realIp)
               return res.status(401).json({
                 Error: "Auth Failed",
@@ -42,7 +46,11 @@ module.exports = (req, res, next) => {
           .select("ip")
           .exec()
           .then(async (result) => {
-            console.log(result.ip);
+            if (token !== result.accessToken) {
+              return res.status(401).json({
+                Error: "Auth Failed",
+              });
+            }
             if (result.ip !== realIp)
               return res.status(401).json({
                 Error: "Auth Failed",

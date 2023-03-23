@@ -15,7 +15,8 @@ const userSchema = mongoose.Schema(
     phone: { type: String, required: true, unique: true },
     shopName: { type: String, required: true, unique: true },
     authorization: { type: String, default: "User" },
-    ip: { type: String },
+    ip: { type: String, default: "" },
+    accessToken: { type: String, default: "" },
   },
   { versionKey: false }
 );

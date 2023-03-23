@@ -103,6 +103,8 @@ exports.user_login = (req, res, next) => {
           };
           accessToken = _helper.createAccessToken(data);
 
+          user[0].accessToken = accessToken;
+
           const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
           const realIp = ip.split(",")[0];
 
@@ -112,7 +114,7 @@ exports.user_login = (req, res, next) => {
             .save()
             .then()
             .catch((err) => {
-              console.log("failed to save");
+              console.log("failed to save usip");
             });
 
           return res.status(200).json({

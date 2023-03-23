@@ -19,13 +19,10 @@ module.exports = {
         Error: "Inputs must be filled",
       });
     }
-    Object.find({ shopName: shopName })
+    await Object.find({ shopName: shopName })
       .exec()
       .then((results) => {
         return res.status(200).json(results);
-      })
-      .catch((err) => {
-        return res.status(500).json(err);
       });
   },
   get_one_data: async (req, res, next, Object, shopName, id) => {
@@ -40,9 +37,6 @@ module.exports = {
         if (results === null) return res.status(500).json("Data not found");
 
         return res.status(200).json(results);
-      })
-      .catch((err) => {
-        res.status(500).json(err);
       });
   },
   create_one_object: async (req, res, next, Object, shopName, jsonData) => {
@@ -64,14 +58,9 @@ module.exports = {
     jsonData["shopName"] = shopName;
     const object = new Object(jsonData);
 
-    object
-      .save()
-      .then((result) => {
-        return res.status(200).json(result);
-      })
-      .catch((error) => {
-        return res.status(500).json(error);
-      });
+    object.save().then((result) => {
+      return res.status(200).json(result);
+    });
   },
   update_one_object: async (req, res, next, Object, shopName, id) => {
     if (!(Object && shopName && id)) {
@@ -107,9 +96,6 @@ module.exports = {
           return res.status(500).json({ Error: "Not found" });
         }
         return res.status(200).json({ Response: "Deleted successfully" });
-      })
-      .catch((err) => {
-        return res.status(500).json({ Error: "Failed" });
       });
   },
   //just for new order
@@ -140,14 +126,9 @@ module.exports = {
     jsonData["totalPrice"] = totalPrice;
 
     const object = new Object(jsonData);
-    object
-      .save()
-      .then((result) => {
-        return res.status(200).json(result);
-      })
-      .catch((error) => {
-        return res.status(500).json(error);
-      });
+    object.save().then((result) => {
+      return res.status(200).json(result);
+    });
   },
   //just for get courier orders
   get_courier_orders: async (
@@ -172,9 +153,6 @@ module.exports = {
       .exec()
       .then((results) => {
         return res.status(200).json(results);
-      })
-      .catch((err) => {
-        return res.status(500).json(err);
       });
   },
 };

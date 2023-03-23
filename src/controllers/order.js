@@ -4,10 +4,10 @@ const Product = require("../models/product");
 const _helper = require("../utils/helper.util");
 
 //done
-exports.get_all_orders = (req, res, next) => {
+exports.get_all_orders = async (req, res, next) => {
   const shopName = req.user.shopName;
 
-  _helper.get_all_data(req, res, next, Order, shopName);
+  await _helper.get_all_data(req, res, next, Order, shopName);
 };
 
 //send orderid

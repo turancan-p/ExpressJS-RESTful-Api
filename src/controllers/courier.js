@@ -1,6 +1,7 @@
 const Courier = require("../models/courier");
 const _helper = require("../utils/helper.util");
 const Order = require("../models/order");
+const bcrypt = require("bcrypt");
 
 //done
 exports.get_all_couriers = (req, res, next) => {
@@ -38,7 +39,7 @@ exports.create_one_courier = async (req, res, next) => {
   }
   bcrypt.hash(password, 10, async (err, hash) => {
     if (err) {
-      return res.status(500).json({
+      return res.status(409).json({
         Error: err,
       });
     } else {

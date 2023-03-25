@@ -4,7 +4,7 @@ const Courier = require("../models/courier");
 
 module.exports = (req, res, next) => {
   const token = req.headers.authorization;
-
+  console.log(token);
   if (typeof token !== "undefined") {
     if (token == null) {
       return res.status(401).json({
@@ -68,6 +68,10 @@ module.exports = (req, res, next) => {
             }
           });
       }
+    });
+  } else {
+    return res.status(401).json({
+      Error: "Auth Failed",
     });
   }
 };

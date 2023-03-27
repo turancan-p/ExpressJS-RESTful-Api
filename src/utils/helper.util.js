@@ -22,7 +22,7 @@ module.exports = {
     await Object.find({ shopName: shopName })
       .exec()
       .then((results) => {
-        return res.status(200).json(results);
+        return res.status(200).json({ Response: result });
       });
   },
   get_one_data: async (req, res, next, Object, shopName, id) => {
@@ -36,7 +36,7 @@ module.exports = {
       .then((results) => {
         if (results === null) return res.status(500).json("Data not found");
 
-        return res.status(200).json(results);
+        return res.status(200).json({ Response: result });
       });
   },
   create_one_object: async (req, res, next, Object, shopName, jsonData) => {
@@ -59,7 +59,7 @@ module.exports = {
     const object = new Object(jsonData);
 
     object.save().then((result) => {
-      return res.status(200).json(result);
+      return res.status(200).json({ Response: result });
     });
   },
   update_one_object: async (req, res, next, Object, shopName, id) => {
@@ -127,7 +127,7 @@ module.exports = {
 
     const object = new Object(jsonData);
     object.save().then((result) => {
-      return res.status(200).json(result);
+      return res.status(200).json({ Response: result });
     });
   },
   //just for get courier orders
@@ -152,7 +152,7 @@ module.exports = {
     })
       .exec()
       .then((results) => {
-        return res.status(200).json(results);
+        return res.status(200).json({ Result: results });
       });
   },
 };

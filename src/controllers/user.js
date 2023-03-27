@@ -142,7 +142,7 @@ exports.user_details = (req, res, next) => {
     .select("_id name email phone shopName")
     .exec()
     .then((result) => {
-      return res.status(200).json(result);
+      return res.status(200).json({Response: result});
     })
     .catch((err) => {
       console.log(err);

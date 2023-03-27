@@ -138,16 +138,7 @@ exports.user_details = (req, res, next) => {
   const shopName = req.user.shopName;
   const userId = req.params.userId;
 
-  User.findOne({ _id: userId, shopName: shopName })
-    .select("_id name email phone shopName")
-    .exec()
-    .then((result) => {
-      return res.status(200).json({Response: result});
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ Error: "User cannot found" });
-    });
+  _helper.get_one_data(req, res, next, User, shopName, userId);
 };
 
 //done

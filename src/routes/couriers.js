@@ -8,7 +8,7 @@ const checkAuthentication = require("../middlewares/authentication");
 router.get("/", checkAuthentication, courierController.get_all_couriers);
 
 router.get(
-  "/courierId",
+  "/:courierId",
   checkAuthentication,
   courierController.get_one_courier
 );
@@ -16,19 +16,19 @@ router.get(
 router.post("/login", checkAuthentication, courierController.courierLogin);
 
 router.patch(
-  "/courierId",
+  "/:courierId",
   checkAuthentication,
   courierController.update_one_courier
 );
 
 router.delete(
-  "/courierId",
+  "/:courierId",
   checkAuthentication,
   courierController.delete_one_courier
 );
 
 router.get(
-  "/orders/courierId",
+  "/orders/:courierId",
   checkAuthentication,
   courierController.get_courier_orders
 );

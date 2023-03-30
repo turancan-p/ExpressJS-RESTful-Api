@@ -14,7 +14,7 @@ module.exports = {
     }));
   },
   get_all_data: async (req, res, next, Object, shopName) => {
-    if (!Object && shopName) {
+    if (!Object && !shopName) {
       return res.status(404).json({
         Error: "Inputs must be filled",
       });

@@ -18,7 +18,10 @@ const userSchema = mongoose.Schema(
     ip: { type: String, default: "" },
     accessToken: { type: String, default: "" },
   },
-  { versionKey: false }
+  {
+    versionKey: false,
+    timestamps: true,
+  }
 );
 
 module.exports.User = mongoose.model("User", userSchema);

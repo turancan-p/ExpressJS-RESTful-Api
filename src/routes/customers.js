@@ -8,7 +8,7 @@ const checkAuthentication = require("../middlewares/authentication");
 router.get("/", checkAuthentication, customerController.get_all_customers);
 
 router.get(
-  "/:productId",
+  "/:customerId",
   checkAuthentication,
   customerController.get_one_customer
 );
@@ -16,13 +16,13 @@ router.get(
 router.post("/", checkAuthentication, customerController.create_new_customer);
 
 router.patch(
-  "/:productId",
+  "/:customerId",
   checkAuthentication,
   customerController.update_one_customer
 );
 
 router.delete(
-  "/:productId",
+  "/:customerId",
   checkAuthentication,
   customerController.delete_one_customer
 );

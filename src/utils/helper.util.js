@@ -119,10 +119,10 @@ module.exports = {
       )
         .exec()
         .then((pro) => {
-          console.log(product);
-          totalPrice += pro.price * jsonData.orderList[x].quantity;
-          console.log(totalPrice);
+          // totalPrice += pro.price * jsonData.orderList[x].quantity;
+          // console.log(totalPrice);
         });
+      console.log(product);
     }
 
     jsonData["_id"] = new mongoose.Types.ObjectId();

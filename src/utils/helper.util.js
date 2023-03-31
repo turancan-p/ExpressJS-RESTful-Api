@@ -114,11 +114,13 @@ module.exports = {
     let totalPrice = 0;
     for (const x in jsonData.orderList) {
       console.log(jsonData.orderList[x]);
-      await ProductObject.findById(jsonData.orderList[x].productId)
+      const product = await ProductObject.findById(
+        jsonData.orderList[x].productId
+      )
         .exec()
-        .then((product) => {
+        .then((pro) => {
           console.log(product);
-          totalPrice += product.price * jsonData.orderList[x].quantity;
+          totalPrice += pro.price * jsonData.orderList[x].quantity;
           console.log(totalPrice);
         });
     }

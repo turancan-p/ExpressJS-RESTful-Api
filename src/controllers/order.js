@@ -29,7 +29,15 @@ exports.create_new_order = async (req, res, next) => {
     orderList: orderList,
   };
 
-  _helper.create_new_order(req, res, next, Order, shopName, jsonData, Product);
+  _helper.create_new_order(
+    req,
+    res,
+    next,
+    (Object = Order),
+    (shopName = shopName),
+    (jsonData = jsonData),
+    (ProductObject = Product)
+  );
 };
 
 //send update props

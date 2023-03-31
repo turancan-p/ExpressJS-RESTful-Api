@@ -117,7 +117,7 @@ module.exports = {
       await ProductObject.findById(jsonData.orderList[x].productId)
         .exec()
         .then((product) => {
-          console.log(product.price);
+          console.log(product);
           totalPrice += product.price * jsonData.orderList[x].quantity;
           console.log(totalPrice);
         });

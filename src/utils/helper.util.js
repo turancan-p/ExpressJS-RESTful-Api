@@ -119,6 +119,7 @@ module.exports = {
       )
         .exec()
         .then((pro) => {
+          console.log(pro);
           // totalPrice += pro.price * jsonData.orderList[x].quantity;
           // console.log(totalPrice);
         });

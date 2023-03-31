@@ -113,17 +113,18 @@ module.exports = {
     }
     let totalPrice = 0;
     for (const x in jsonData.orderList) {
-      console.log(jsonData.orderList[x]);
-      const product = await ProductObject.findOne({
+      console.log("1", jsonData.orderList[x]);
+      console.log("2", jsonData.orderList[x].productId);
+      const product = await ProductObject.find({
         _id: jsonData.orderList[x].productId,
       })
         .exec()
         .then((pro) => {
-          console.log(pro);
+          console.log("3", pro);
           // totalPrice += pro.price * jsonData.orderList[x].quantity;
           // console.log(totalPrice);
         });
-      console.log(product);
+      console.log("4", product);
     }
 
     jsonData["_id"] = new mongoose.Types.ObjectId();

@@ -29,13 +29,13 @@ exports.create_new_order = async (req, res, next) => {
     orderList: orderList,
   };
 
-  _helper.create_new_order(
+  await _helper.create_new_order(
     req,
     res,
     next,
-    (Object = Order),
-    (shopName = shopName),
-    (jsonData = jsonData),
+    Order,
+    shopName,
+    jsonData,
     (ProductObject = Product)
   );
 };

@@ -74,7 +74,10 @@ module.exports = {
       updateOpts[opts.propName] = opts.value;
     }
 
-    Object.updateOne({ _id: id, shopName: shopName }, { $set: updateOpts })
+    await Object.updateOne(
+      { _id: id, shopName: shopName },
+      { $set: updateOpts }
+    )
       .exec()
       .then((result) => {
         if (result.modifiedCount <= 0) {
